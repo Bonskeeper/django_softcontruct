@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Message notifier</title>
+    <script></script>
+</head>
+<body>
+    <h1>
+        Message notifier
+        <textarea id="message" cols="100" rows="1"></textarea><br/>
+    </h1>
+    <script>
+        var messageSocket = new WebSocket('ws://' + window.location.host + '/');
+        messageSocket.onmessage = function(e) {
+            var data = JSON.parse(e.data);
+            var message = data['message'];
+            document.querySelector('#message').value = (message + '\n');
+        };
+
+        messageSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+    </script>
+</body>
+</html>
