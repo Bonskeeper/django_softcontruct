@@ -69,9 +69,18 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django_softconstruct.wsgi.application'
+# WSGI_APPLICATION = 'django_softconstruct.wsgi.application'
 
 ASGI_APPLICATION = 'django_softconstruct.routing.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases

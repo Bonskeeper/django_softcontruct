@@ -1,11 +1,14 @@
+from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
-from django.urls import path
-from websocket_message.consumers import MessageConsumer
+import websocket_message.routing
 
 application = ProtocolTypeRouter({
-    "websocket": URLRouter([
-        path("ws://", MessageConsumer),
-    ])
+    # (http->django views is added by default)
+    'websocket': AuthMiddlewareStack(
+        URLRouter(
+            websocket_message.routing.websocket_urlpatterns
+        )
+    ),
 })
 # application = ProtocolTypeRouter({
 #     "wsmessage": MessageConsumer,

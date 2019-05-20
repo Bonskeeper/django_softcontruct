@@ -12,11 +12,11 @@
         <textarea id="message" cols="100" rows="1"></textarea><br/>
     </h1>
     <script>
-        var messageSocket = new WebSocket('ws://' + window.location.host + '/');
+        var messageSocket = new WebSocket('ws://' + window.location.host + '/djch' + '/');
         messageSocket.onmessage = function(e) {
             var data = JSON.parse(e.data);
             var message = data['message'];
-            document.querySelector('#message').value = (message + '\n');
+            document.querySelector('#message').value = message;
         };
 
         messageSocket.onclose = function(e) {
