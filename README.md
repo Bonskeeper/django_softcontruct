@@ -12,8 +12,9 @@ includes a current timestamp, number and and its sequence number
 * cd nameofvenv
 * Clone repo in created folder: git clone https://github.com/Bonskeeper/django_softcontruct.git
 * Install requrements: pip install -r requirements.txt
-In three different terminal'ss tabs you should launch these files:
-* Start django server: python manage.py runserver
-* Start websocket-server: python ws_server.py
-* Start websocket-client: python ws_client.py
+* In three different terminal'ss tabs you should launch these files:
+1) Start django server: python manage.py runserver
+2) Start websocket-server: python ws_server.py
+3) Start websocket-client: python ws_client.py
+
 Open web-page and watch :)
